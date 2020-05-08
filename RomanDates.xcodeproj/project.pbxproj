@@ -14,6 +14,7 @@
 		BF7A5A0E2465BF1300663DCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0D2465BF1300663DCF /* Preview Assets.xcassets */; };
 		BF7A5A112465BF1300663DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */; };
 		BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA1D1B72465BFB1007DAEAA /* Converters.swift */; };
+		BFC233EA2465E37E00B92FB5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC233E92465E37E00B92FB5 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		BF7A5A102465BF1300663DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF7A5A122465BF1300663DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFA1D1B72465BFB1007DAEAA /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
+		BFC233E92465E37E00B92FB5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				BF7A5A062465BF1000663DCF /* SceneDelegate.swift */,
 				BF7A5A082465BF1000663DCF /* ContentView.swift */,
 				BFA1D1B72465BFB1007DAEAA /* Converters.swift */,
+				BFC233E92465E37E00B92FB5 /* SettingsView.swift */,
 				BF7A5A0A2465BF1300663DCF /* Assets.xcassets */,
 				BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */,
 				BF7A5A122465BF1300663DCF /* Info.plist */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFC233EA2465E37E00B92FB5 /* SettingsView.swift in Sources */,
 				BF7A5A052465BF1000663DCF /* AppDelegate.swift in Sources */,
 				BF7A5A072465BF1000663DCF /* SceneDelegate.swift in Sources */,
 				BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */,

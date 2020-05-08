@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var dateToConvert = Date()
 
+    @State private var showingSettings = false
+
     var convertedDate: String {
         let result = dateToConvert.dateInRoman()
 
@@ -30,7 +32,26 @@ struct ContentView: View {
                     .date)
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())
+
+                Section {
+                    Button(action: {
+                        print("Edit button was tapped")
+                        self.showingSettings = true
+                    }) {
+                        HStack(spacing: 10) {
+                            Image(systemName: "gear")
+                            .renderingMode(.original)
+                            Text("Settings")
+                        }
+                    }
+                    
+                }
             }
+
+
+        }
+        .sheet(isPresented: $showingSettings) {
+            SettingsView()
         }
     }
 }
