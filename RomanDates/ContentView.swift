@@ -19,18 +19,18 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-        Text(convertedDate)
-            .font(.largeTitle)
+            Text(convertedDate)
+                .font(.largeTitle)
 
-        Form {
-            Text("What date do you want to convert?")
-                .font(.headline)
+            Form {
+                Text("What date do you want to convert?")
+                    .font(.headline)
 
-            DatePicker("Please choose a date", selection: $dateToConvert, displayedComponents:
-                .date)
-                .labelsHidden()
-                .datePickerStyle(WheelDatePickerStyle())
-        }
+                DatePicker("Please choose a date", selection: $dateToConvert, displayedComponents:
+                    .date)
+                    .labelsHidden()
+                    .datePickerStyle(WheelDatePickerStyle())
+            }
         }
     }
 }
