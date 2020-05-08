@@ -13,6 +13,7 @@
 		BF7A5A0B2465BF1300663DCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0A2465BF1300663DCF /* Assets.xcassets */; };
 		BF7A5A0E2465BF1300663DCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0D2465BF1300663DCF /* Preview Assets.xcassets */; };
 		BF7A5A112465BF1300663DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */; };
+		BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA1D1B72465BFB1007DAEAA /* Converters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BF7A5A0D2465BF1300663DCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BF7A5A102465BF1300663DCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF7A5A122465BF1300663DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFA1D1B72465BFB1007DAEAA /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				BF7A5A042465BF1000663DCF /* AppDelegate.swift */,
 				BF7A5A062465BF1000663DCF /* SceneDelegate.swift */,
 				BF7A5A082465BF1000663DCF /* ContentView.swift */,
+				BFA1D1B72465BFB1007DAEAA /* Converters.swift */,
 				BF7A5A0A2465BF1300663DCF /* Assets.xcassets */,
 				BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */,
 				BF7A5A122465BF1300663DCF /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				BF7A5A052465BF1000663DCF /* AppDelegate.swift in Sources */,
 				BF7A5A072465BF1000663DCF /* SceneDelegate.swift in Sources */,
+				BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */,
 				BF7A5A092465BF1000663DCF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
