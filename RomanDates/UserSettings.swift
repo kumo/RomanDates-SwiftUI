@@ -7,18 +7,46 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
 
 class UserSettings: ObservableObject {
-    @Published var useDeviceDateOrder: Bool = UserDefaults.standard.bool(forKey: "useDeviceDateOrder") {
-        didSet { UserDefaults.standard.set(self.useDeviceDateOrder, forKey: "useDeviceDateOrder") }
+    
+    @Published var useDeviceDateOrder: Bool {
+        didSet {
+            UserDefaults.standard.set(useDeviceDateOrder, forKey: "useDeviceDateOrder")
+        }
     }
-    @Published var dateOrder: Int = UserDefaults.standard.integer(forKey: "dateOrder") {
-        didSet { UserDefaults.standard.set(self.dateOrder, forKey: "dateOrder") }
+    
+    @Published var dateOrder: Int {
+        didSet {
+            UserDefaults.standard.set(dateOrder, forKey: "dateOrder")
+        }
     }
-    @Published var showYear: Bool = UserDefaults.standard.bool(forKey: "showYear") {
-        didSet { UserDefaults.standard.set(self.showYear, forKey: "showYear") }
+    
+    @Published var showYear: Bool {
+        didSet {
+            UserDefaults.standard.set(showYear, forKey: "showYear")
+        }
     }
-    @Published var symbolSeparator: Int = UserDefaults.standard.integer(forKey: "symbolSeparator") {
-        didSet { UserDefaults.standard.set(self.symbolSeparator, forKey: "symbolSeparator") }
+    
+    @Published var showFullYear: Bool {
+        didSet {
+            UserDefaults.standard.set(showFullYear, forKey: "showFullYear")
+        }
+    }
+    
+    @Published var symbolSeparator: Int {
+        didSet {
+            UserDefaults.standard.set(symbolSeparator, forKey: "symbolSeparator")
+        }
+    }
+    
+    init() {
+        self.useDeviceDateOrder = UserDefaults.standard.object(forKey: "useDeviceDateOrder") as? Bool ?? true
+        self.dateOrder = UserDefaults.standard.object(forKey: "dateOrder") as? Int ?? 1
+        self.showYear = UserDefaults.standard.object(forKey: "showYear") as? Bool ?? true
+        self.showFullYear = UserDefaults.standard.object(forKey: "showFullYear") as? Bool ?? true
+        self.symbolSeparator = UserDefaults.standard.object(forKey: "symbolSeparator") as? Int ?? 3
     }
 }

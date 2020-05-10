@@ -23,7 +23,11 @@ struct SettingsView: View {
 
                     if (settings.showYear) {
                         Text(symbolOptions[settings.symbolSeparator])
-                        Text("MMXII")
+                        if (settings.showFullYear) {
+                            Text("MMXII")
+                        } else {
+                            Text("XII")
+                        }
                     }
                 }
             }
@@ -52,7 +56,9 @@ struct SettingsView: View {
             Section(header: Text("YEAR"), footer: Text("Should the year be shown and should it appear in full (e.g. 2020 or 20)")) {
 
                 Toggle("Show year", isOn: $settings.showYear)
-                Text("Show year in full")
+                Toggle("Show year in full", isOn: $settings.showFullYear)
+                .disabled(settings.showYear == false)
+
             }
 
             Section(header: Text("SEPARATOR SYMBOL")) {
