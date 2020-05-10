@@ -8,8 +8,40 @@
 
 import SwiftUI
 
+// what I want is to have the core stuff for creating a piece of text with the date in roman numerals, the symbol separator, and the year formatting, done in another reusable thing. But, this thing can calculate the parts of a date, but not format it. So is that fine?
+
+class PreviewViewModel: ObservableObject {
+    private var symbolOptions = ["·", "–", "/", " "]
+
+    func previewConversion(userSettings: UserSettings) -> String {
+        var result = ""
+
+        if (userSettings.useDeviceDateOrder) {
+            result += "(device settings)"
+        } else {
+            result += "(manual order)"
+        }
+
+        result += " XII"
+        result += symbolOptions[userSettings.symbolSeparator]
+        result += "XII"
+
+        if (userSettings.showYear) {
+            result += symbolOptions[userSettings.symbolSeparator]
+            if (userSettings.showFullYear) {
+                result += "MMXII"
+            } else {
+                result += "XII"
+            }
+        }
+
+        return result
+    }
+}
+
 struct SettingsView: View {
     @EnvironmentObject var settings: UserSettings
+    @ObservedObject private var previewViewModel = PreviewViewModel()
 
     private var symbolOptions = ["·", "–", "/", " "]
 
@@ -17,18 +49,8 @@ struct SettingsView: View {
         Form {
             Section(footer: Text("Preview")) {
                 HStack {
-                    Text("XII")
-                    Text(symbolOptions[settings.symbolSeparator])
-                    Text("XII")
-
-                    if (settings.showYear) {
-                        Text(symbolOptions[settings.symbolSeparator])
-                        if (settings.showFullYear) {
-                            Text("MMXII")
-                        } else {
-                            Text("XII")
-                        }
-                    }
+                    // I don't understand exactly how it works that this Text is updated everytime the settings change
+                    Text(previewViewModel.previewConversion(userSettings: settings))
                 }
             }
 
@@ -57,7 +79,7 @@ struct SettingsView: View {
 
                 Toggle("Show year", isOn: $settings.showYear)
                 Toggle("Show year in full", isOn: $settings.showFullYear)
-                .disabled(settings.showYear == false)
+                    .disabled(settings.showYear == false)
 
             }
 
