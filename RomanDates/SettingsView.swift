@@ -9,24 +9,34 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var dateOrder: Int = 1
-    @State private var dateDeviceSettings: Bool = false
-    @State private var showYear: Bool = false
-    @State private var symbolSeparator: Int = 1
+    @EnvironmentObject var settings: UserSettings
 
     private var symbolOptions = ["·", "–", "/", " "]
 
     var body: some View {
         Form {
+            Section(footer: Text("Preview")) {
+                HStack {
+                    Text("XII")
+                    Text(symbolOptions[settings.symbolSeparator])
+                    Text("XII")
+
+                    if (settings.showYear) {
+                        Text(symbolOptions[settings.symbolSeparator])
+                        Text("MMXII")
+                    }
+                }
+            }
+
             Section(header: Text("DATE ORDER")) {
 
-                Toggle("Use device settings", isOn: $dateDeviceSettings)
+                Toggle("Use device settings", isOn: $settings.useDeviceDateOrder)
 
                 Picker(
-                    selection: $dateOrder,
+                    selection: $settings.dateOrder,
                     label: Text("date order"),
                     content: {
-                        if (showYear) {
+                        if (settings.showYear) {
                             Text("Day-M-Y").tag(1)
                             Text("Month-D-Y").tag(2)
                             Text("Year-M-D").tag(3)
@@ -36,18 +46,18 @@ struct SettingsView: View {
                         }
                 })
                     .pickerStyle(SegmentedPickerStyle())
-                    .disabled(dateDeviceSettings)
+                    .disabled(settings.useDeviceDateOrder)
             }
 
             Section(header: Text("YEAR"), footer: Text("Should the year be shown and should it appear in full (e.g. 2020 or 20)")) {
 
-                Toggle("Show year", isOn: $showYear)
+                Toggle("Show year", isOn: $settings.showYear)
                 Text("Show year in full")
             }
 
-            Section(header: Text("Separator Symbol")) {
+            Section(header: Text("SEPARATOR SYMBOL")) {
                 Picker(
-                    selection: $symbolSeparator,
+                    selection: $settings.symbolSeparator,
                     label: Text("symbol separator"),
                     content: {
                         ForEach(0..<symbolOptions.count) {
@@ -63,6 +73,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView().environmentObject(UserSettings())
     }
 }

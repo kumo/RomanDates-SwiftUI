@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var settings: UserSettings
+
     @State private var dateToConvert = Date()
 
     @State private var showingSettings = false
@@ -35,29 +37,29 @@ struct ContentView: View {
 
                 Section {
                     Button(action: {
-                        print("Edit button was tapped")
                         self.showingSettings = true
                     }) {
                         HStack(spacing: 10) {
                             Image(systemName: "gear")
-                            .renderingMode(.original)
+                                .renderingMode(.original)
                             Text("Settings")
                         }
                     }
-                    
+
                 }
+
             }
 
 
         }
         .sheet(isPresented: $showingSettings) {
-            SettingsView()
+            SettingsView().environmentObject(self.settings)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserSettings())
     }
 }

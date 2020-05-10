@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0E69072466F21F00BAEB40 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E69062466F21F00BAEB40 /* UserSettings.swift */; };
 		BF7A5A052465BF1000663DCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A5A042465BF1000663DCF /* AppDelegate.swift */; };
 		BF7A5A072465BF1000663DCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A5A062465BF1000663DCF /* SceneDelegate.swift */; };
 		BF7A5A092465BF1000663DCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7A5A082465BF1000663DCF /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF0E69062466F21F00BAEB40 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		BF7A5A012465BF1000663DCF /* RomanDates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RomanDates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF7A5A042465BF1000663DCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF7A5A062465BF1000663DCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				BF7A5A082465BF1000663DCF /* ContentView.swift */,
 				BFA1D1B72465BFB1007DAEAA /* Converters.swift */,
 				BFC233E92465E37E00B92FB5 /* SettingsView.swift */,
+				BF0E69062466F21F00BAEB40 /* UserSettings.swift */,
 				BF7A5A0A2465BF1300663DCF /* Assets.xcassets */,
 				BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */,
 				BF7A5A122465BF1300663DCF /* Info.plist */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFC233EA2465E37E00B92FB5 /* SettingsView.swift in Sources */,
+				BF0E69072466F21F00BAEB40 /* UserSettings.swift in Sources */,
 				BF7A5A052465BF1000663DCF /* AppDelegate.swift in Sources */,
 				BF7A5A072465BF1000663DCF /* SceneDelegate.swift in Sources */,
 				BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */,
