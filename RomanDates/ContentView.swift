@@ -11,26 +11,20 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var settings: UserSettings
 
-    @State private var dateToConvert = Date()
+    @ObservedObject private var romanDateViewModel = RomanDateViewModel()
 
     @State private var showingSettings = false
 
-    var convertedDate: String {
-        let result = dateToConvert.dateInRoman()
-
-        return result.year + "-" + result.month + "-" + result.day
-    }
-
     var body: some View {
         VStack {
-            Text(convertedDate)
+            Text(romanDateViewModel.convertDate(userSettings: settings))
                 .font(.largeTitle)
 
             Form {
                 Text("What date do you want to convert?")
                     .font(.headline)
 
-                DatePicker("Please choose a date", selection: $dateToConvert, displayedComponents:
+                DatePicker("Please choose a date", selection: $romanDateViewModel.dateToConvert, displayedComponents:
                     .date)
                     .labelsHidden()
                     .datePickerStyle(WheelDatePickerStyle())

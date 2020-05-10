@@ -16,6 +16,7 @@
 		BF7A5A112465BF1300663DCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF7A5A0F2465BF1300663DCF /* LaunchScreen.storyboard */; };
 		BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA1D1B72465BFB1007DAEAA /* Converters.swift */; };
 		BFC233EA2465E37E00B92FB5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC233E92465E37E00B92FB5 /* SettingsView.swift */; };
+		BFC3E3F52468A6470014E9AA /* RomanDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC3E3F42468A6460014E9AA /* RomanDateViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BF7A5A122465BF1300663DCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFA1D1B72465BFB1007DAEAA /* Converters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converters.swift; sourceTree = "<group>"; };
 		BFC233E92465E37E00B92FB5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BFC3E3F42468A6460014E9AA /* RomanDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanDateViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				BF7A5A042465BF1000663DCF /* AppDelegate.swift */,
 				BF7A5A062465BF1000663DCF /* SceneDelegate.swift */,
 				BF7A5A082465BF1000663DCF /* ContentView.swift */,
+				BFC3E3F42468A6460014E9AA /* RomanDateViewModel.swift */,
 				BFA1D1B72465BFB1007DAEAA /* Converters.swift */,
 				BFC233E92465E37E00B92FB5 /* SettingsView.swift */,
 				BF0E69062466F21F00BAEB40 /* UserSettings.swift */,
@@ -160,6 +163,7 @@
 				BF7A5A052465BF1000663DCF /* AppDelegate.swift in Sources */,
 				BF7A5A072465BF1000663DCF /* SceneDelegate.swift in Sources */,
 				BFA1D1B82465BFB1007DAEAA /* Converters.swift in Sources */,
+				BFC3E3F52468A6470014E9AA /* RomanDateViewModel.swift in Sources */,
 				BF7A5A092465BF1000663DCF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
