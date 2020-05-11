@@ -54,25 +54,28 @@ struct SettingsView: View {
                 }
             }
 
+            // TODO: either hide the picker or show the current device settings instead
             Section(header: Text("DATE ORDER")) {
 
                 Toggle("Use device settings", isOn: $settings.useDeviceDateOrder)
 
+                //if (settings.useDeviceDateOrder == false) {
                 Picker(
                     selection: $settings.dateOrder,
                     label: Text("date order"),
                     content: {
                         if (settings.showYear) {
-                            Text("Day-M-Y").tag(1)
-                            Text("Month-D-Y").tag(2)
-                            Text("Year-M-D").tag(3)
+                            Text("Day-M-Y").tag(0)
+                            Text("Month-D-Y").tag(1)
+                            Text("Year-M-D").tag(2)
                         } else {
-                            Text("Day–Month").tag(1)
-                            Text("Month–Day").tag(2)
+                            Text("Day–Month").tag(0)
+                            Text("Month–Day").tag(1)
                         }
                 })
                     .pickerStyle(SegmentedPickerStyle())
                     .disabled(settings.useDeviceDateOrder)
+                //}
             }
 
             Section(header: Text("YEAR"), footer: Text("Should the year be shown and should it appear in full (e.g. 2020 or 20)")) {

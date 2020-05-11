@@ -8,41 +8,84 @@
 
 import Foundation
 
-public enum DateOrder: Int {
-    case dayFirst = 1, monthFirst, yearFirst
-}
+public enum RomanDateFormatter: Int {
+    case dayMonthYear, monthDayYear, yearMonthDay
+    case dayMonth, monthDay
+    case dayMonthShortYear, monthDayShortYear, shortYearMonthDay
 
-public extension Locale {
-
-    func dateOrder() -> DateOrder {
-        guard let formatter = DateFormatter.dateFormat(fromTemplate: "MMMMdY", options: 0, locale: self) else {
-            return .dayFirst
+    mutating func removeYear() {
+        switch self {
+        case .dayMonthYear, .dayMonthShortYear:
+            self = .dayMonth
+        case .monthDayYear, .monthDayShortYear, .yearMonthDay, .shortYearMonthDay:
+            self = .monthDay
+        default:
+            break
         }
+    }
 
-        if formatter.hasPrefix("Y") {
-            return .yearFirst
+    mutating func useShortYear() {
+        switch self {
+        case .dayMonthYear:
+            self = .dayMonthShortYear
+        case .monthDayYear:
+            self = .monthDayShortYear
+        case .yearMonthDay:
+            self = .shortYearMonthDay
+        default:
+            break
         }
-
-        if formatter.hasPrefix("M") {
-            return .monthFirst
-        }
-
-        return .dayFirst
     }
 }
 
-enum RomanDateError: Error {
-    case invalidDate
+public extension Locale {
+    func dateOrder() -> RomanDateFormatter {
+        guard let formatter = DateFormatter.dateFormat(fromTemplate: "MMMMdY", options: 0, locale: self) else {
+            return .dayMonthYear
+        }
+
+        if formatter.hasPrefix("Y") {
+            return .yearMonthDay
+        }
+
+        if formatter.hasPrefix("M") {
+            return .monthDayYear
+        }
+
+        return .dayMonthYear
+    }
 }
-struct ConvertedDate {
+
+struct RomanDate {
     var day: String
     var month: String
     var year: String
     var shortYear: String
+
+    func dateComponentsFor(dateFormatter: RomanDateFormatter) -> [String] {
+        switch dateFormatter {
+        case .dayMonth:
+            return [day, month]
+        case .monthDay:
+            return [month, day]
+        case .dayMonthYear:
+            return [day, month, year]
+        case .dayMonthShortYear:
+            return [day, month, shortYear]
+        case .monthDayYear:
+            return [month, day, year]
+        case .monthDayShortYear:
+            return [month, day, shortYear]
+        case .yearMonthDay:
+            return [year, month, day]
+        case .shortYearMonthDay:
+            return [shortYear, month, day]
+        }
+    }
 }
 
 struct RomanDateConverter {
-    func convertInt(_ int: Int) -> String? {
+    private func convert(_ int: Int) -> String? {
         guard int > 0 else {
             return nil
         }
@@ -68,7 +111,7 @@ struct RomanDateConverter {
         return result
     }
 
-    func convertDate(_ date: Date) -> ConvertedDate? {
+    func convert(_ date: Date) -> RomanDate? {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: date)
 
@@ -77,50 +120,12 @@ struct RomanDateConverter {
         guard let year = components.year else { return nil}
         let shortYear = year % 100
 
-        let result = ConvertedDate(day: convertInt(day)!, month: convertInt(month)!, year: convertInt(year)!, shortYear: convertInt(shortYear)!)
-
-        return result
-    }
-}
-extension Int {
-    func toRoman() -> String? {
-        guard self > 0 else {
+        guard let convertedDay = convert(day), let convertedMonth = convert(month), let convertedYear = convert(year), let convertedShortYear = convert(shortYear) else {
             return nil
         }
 
-        var number = self
-
-        let values = [("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C",100), ("XC", 90), ("L",50), ("XL",40), ("X",10), ("IX", 9), ("V",5),("IV",4), ("I",1)]
-
-        var result = ""
-
-        for (romanChar, arabicValue) in values {
-            let count = number / arabicValue
-
-            if count == 0 { continue }
-
-            for _ in 1...count
-            {
-                result += romanChar
-                number -= arabicValue
-            }
-        }
+        let result = RomanDate(day: convertedDay, month: convertedMonth, year: convertedYear, shortYear: convertedShortYear)
 
         return result
-    }
-}
-
-extension Date {
-    func dateInRoman() -> (day:String, month:String, year:String, shortYear:String?) {
-
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: self)
-
-        let month = components.month
-        let day = components.day
-        let year = components.year
-        let shortYear = year! % 100
-
-        return (day!.toRoman()!, month!.toRoman()!, year!.toRoman()!, shortYear.toRoman())
     }
 }
